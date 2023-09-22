@@ -1,10 +1,9 @@
+import List3 from "@/app/components/List3";
 import supabase from "@/app/config/supabase";
 import {useParams} from 'next/navigation';
 import { useEffect, useState } from "react";
-import List2 from "./List2";
 
-
-const BlogDetails = () => {
+export default function BlogId(){
     const [blogs, setBlogs] = useState(null);
     const params = useParams()
     const id = params?.id
@@ -24,19 +23,16 @@ const BlogDetails = () => {
         }
         fetchPost();
     }, [])
-
-    return (
+    return(
         <>
-            <div>
-                {blogs && 
-                    (Array.isArray(blogs) 
-                        ? blogs.map(blog => <List2 key={blog.id} blog={blog} />)
-                        : [<List2 key={blogs.id} blog={blogs} />]    
-                    )
-                }
-            </div>
-        </>
-    );
+        <div>
+            {blogs && 
+                (Array.isArray(blogs) 
+                    ? blogs.map(blog => <List3 key={blog.id} blog={blog} />)
+                    : [<List3 key={blogs.id} blog={blogs} />]    
+                )
+            }
+        </div>
+    </>
+    )
 }
- 
-export default BlogDetails;
