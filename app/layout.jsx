@@ -16,11 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-        <section className='flex'>
+        <section className='lg:flex'>
           <aside className='lg:w-1/4 hidden lg:block'>
             <SideBar/>
           </aside>
-          <main className='w-3/4 py-6 px-8 bg-gray-100'>
+          <main className='lg:w-3/4 py-6 px-8 bg-gray-100'>
             {children}
           </main>
         </section>
