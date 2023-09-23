@@ -21,7 +21,9 @@ export default async function Blogs(){
     // const [error, setError] = useState(null);
 
 
-    const blogs = await getBlogs()
+    const blog = await getBlogs()
+
+
 
     // useEffect(() => {
     //     const fetch = async () => {
@@ -45,12 +47,13 @@ export default async function Blogs(){
              {error}
 
             <div className="">
-            {blogs && 
+                {/* {blogs && 
                 (Array.isArray(blogs) 
-                    ? blogs.map(blog => <List key={blog.id} blog={blog} />)
-                    : [<List key={blogs.id} blog={blogs} />]    
+                    ? blogs.map(blog => <List3 key={blog.id} blog={blog} />)
+                    : [<List3 key={blogs.id} blog={blogs} />]    
                 )
-            }
+            } */}
+            <List blog={blog}/>
             </div>
         </>
     );
