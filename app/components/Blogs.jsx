@@ -21,7 +21,9 @@ export default async function Blogs(){
     // const [error, setError] = useState(null);
 
 
-    const blog = await getBlogs()
+    const blogs = getBlogs()
+
+    const blog = await blogs
 
 
 
