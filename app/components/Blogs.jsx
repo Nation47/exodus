@@ -1,29 +1,44 @@
-'use client'
+// 'use client'
 import supabase from "../config/supabase";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import List from "./List";
 
 
-const Blogs = () => {
-    const [blogs, setBlogs] = useState([]);
-    const [error, setError] = useState(null);
+async function getBlogs(){
+    const res = await supabase
+    .from("blogs")
+    .select()
 
-    useEffect(() => {
-        const fetch = async () => {
-            const {data, error} = await supabase
-                .from("blogs")
-                .select()
+    if(!res.ok){
+        throw new Error("Connection Error");
+    }
 
-                if(data){
-                    setBlogs(data);
-                    console.log(data);
-                } else{
-                    setError('Check your Network Connection');
-                    setBlogs(null);
-                }
-        }
-        fetch();
-    },[])
+    return res.json();
+}
+
+export default async function Blogs(){
+    // const [blogs, setBlogs] = useState([]);
+    // const [error, setError] = useState(null);
+
+
+    const blogs = await getBlogs()
+
+    // useEffect(() => {
+    //     const fetch = async () => {
+    //         const {data, error} = await supabase
+    //             .from("blogs")
+    //             .select()
+
+    //             if(data){
+    //                 setBlogs(data);
+    //                 console.log(data);
+    //             } else{
+    //                 setError('Check your Network Connection');
+    //                 setBlogs(null);
+    //             }
+    //     }
+    //     fetch();
+    // },[])
 
     return (
         <>
@@ -31,7 +46,7 @@ const Blogs = () => {
 
             <div className="">
                 {blogs && (
-                    <div  className="grid grid-cols-3 gap-4">
+                    <div  className="flex flex-col lg:grid grid-cols-3 gap-4">
                             {blogs.map((blog) => (
                                 <List key={blog.id} blog={blog} />
                             ))}
@@ -42,4 +57,4 @@ const Blogs = () => {
     );
 }
  
-export default Blogs;
+// export default Blogs;
