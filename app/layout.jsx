@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <section className='flex'>
-          <aside className='w-1/4'>
-            <SideBar />
+          <aside className='lg:w-1/4 hidden lg:block'>
+            <SideBar/>
           </aside>
           <main className='w-3/4 py-6 px-8 bg-gray-100'>
             {children}

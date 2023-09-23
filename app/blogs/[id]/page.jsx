@@ -1,30 +1,17 @@
-'use client'
+
+
 import supabase from "@/app/config/supabase";
 import {useParams} from 'next/navigation';
-import { useEffect, useState } from "react";
+
 import List2 from "./List2";
+import getBlogById from "@/app/actions/getBlogbyId";
 
 
-const BlogDetails = () => {
-    const [blogs, setBlogs] = useState(null);
-    const params = useParams()
-    const id = params?.id
+export default async function BlogDetails({params}){
+   
+  
 
-    useEffect(() => {
-        const fetchPost = async () => {
-            const {data} = await supabase 
-                .from('blogs')
-                .select('*')
-                .eq('id', id)
-
-                if(data){
-                    setBlogs(data);
-                    console.log(data)
-                }
-
-        }
-        fetchPost();
-    }, [])
+    const blogs = await getBlogById(params.id)
 
     return (
         <>
@@ -40,4 +27,4 @@ const BlogDetails = () => {
     );
 }
  
-export default BlogDetails;
+// export default BlogDetails;
