@@ -1,3 +1,5 @@
+'use client';
+
 import List3 from "@/app/components/List3";
 import supabase from "@/app/config/supabase";
 import {useParams} from 'next/navigation';

@@ -1,3 +1,4 @@
+'use client'
 import supabase from "@/app/config/supabase";
 import {useParams} from 'next/navigation';
 import { useEffect, useState } from "react";
